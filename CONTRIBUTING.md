@@ -10,7 +10,7 @@ Open an issue with the **Suggest a project** template. Fill in the form; a maint
 
 1. Fork this repository.
 2. Add one entry to `projects.json`, copying the template below.
-3. Run `python3 scripts/build_readme.py` to refresh the README table.
+3. Run `python3 scripts/build_readme.py && python3 scripts/build_site.py` to refresh the README table and the page.
 4. Open a pull request and complete the checklist in the PR template.
 
 ### Entry template

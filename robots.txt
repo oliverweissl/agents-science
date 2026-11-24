@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oliverweissl.github.io/agents-science/sitemap.xml
