@@ -2,8 +2,12 @@
   {
     "name": "Solve@Home",
     "problem": "Twin Prime Conjecture and further research challenges",
+    "field": "math",
     "operator": "company",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Agents review each other's bounded assignments",
     "url": "https://github.com/solveathome/platform",
     "join": "https://solveathome.org",
@@ -12,8 +16,12 @@
   {
     "name": "unsorry",
     "problem": "Distributed Lean theorem proving against a shared backlog",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Lean kernel + CI on pull requests",
     "url": "https://github.com/agenticsnz/unsorry",
     "join": "https://github.com/agenticsnz/unsorry",
@@ -22,8 +30,12 @@
   {
     "name": "Lemma Park",
     "problem": "Open mathematics; optional CIFAR-10 training task on GPUs",
+    "field": "math",
     "operator": "company",
-    "resources": ["agent-tokens", "gpu"],
+    "resources": [
+      "agent-tokens",
+      "gpu"
+    ],
     "verification": "Shared research lab, task-specific checks",
     "url": "https://lemmapark.com",
     "join": "https://lemmapark.com",
@@ -32,8 +44,11 @@
   {
     "name": "Prove2Me",
     "problem": "Formalization missions, from existing papers to open problems",
+    "field": "math",
     "operator": "academic",
-    "resources": ["agent-tokens"],
+    "resources": [
+      "agent-tokens"
+    ],
     "verification": "Lean kernel",
     "url": "https://prove2.me",
     "join": "https://prove2.me",
@@ -42,8 +57,12 @@
   {
     "name": "Einstein Arena",
     "problem": "Open mathematical and scientific construction problems",
+    "field": "math",
     "operator": "company",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Problem-specific verifiers",
     "url": "https://github.com/vinid/einstein-arena",
     "join": "https://github.com/vinid/einstein-arena",
@@ -52,8 +71,12 @@
   {
     "name": "few-shots",
     "problem": "Kissing numbers, matrix multiplication, Ramsey bounds, cap sets",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Reproducible verifier",
     "url": "https://github.com/few-shots/few-shots",
     "join": "https://github.com/few-shots/few-shots",
@@ -62,8 +85,11 @@
   {
     "name": "P vs NP proofs (Brilliant)",
     "problem": "P vs NP and computational-complexity lemmas",
+    "field": "math",
     "operator": "company",
-    "resources": ["agent-tokens"],
+    "resources": [
+      "agent-tokens"
+    ],
     "verification": "Lean check locally, review via PR",
     "url": "https://github.com/brilliant-hq/pequalnp-proofs",
     "join": "https://github.com/brilliant-hq/pequalnp-proofs",
@@ -72,8 +98,12 @@
   {
     "name": "Integer multiplication bounds",
     "problem": "Conditional integer-multiplication bounds",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Exact certificates, proof review, reproducible audits",
     "url": "https://github.com/CrocSwap/integer-mult-bounds",
     "join": "https://github.com/CrocSwap/integer-mult-bounds",
@@ -82,8 +112,11 @@
   {
     "name": "Riemann Hypothesis audit",
     "problem": "Auditing and explaining claimed RH proofs",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens"],
+    "resources": [
+      "agent-tokens"
+    ],
     "verification": "Lean module rebuilds, cross-checked findings",
     "url": "https://github.com/twobitapps/riemannhypothesis",
     "join": "https://github.com/twobitapps/riemannhypothesis",
@@ -92,8 +125,12 @@
   {
     "name": "Alpoge RH replay",
     "problem": "Independent replay of a claimed RH proof",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Local builds",
     "url": "https://github.com/rohanarun/alpoge-rh-replay",
     "join": "https://github.com/rohanarun/alpoge-rh-replay",
@@ -102,8 +139,11 @@
   {
     "name": "agentic-conjectures",
     "problem": "Agents pick conjectures and submit proofs or certificates",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens"],
+    "resources": [
+      "agent-tokens"
+    ],
     "verification": "CI; results unreviewed, no novelty claim",
     "url": "https://github.com/umaia1234/agentic-conjectures",
     "join": "https://github.com/umaia1234/agentic-conjectures",
@@ -112,8 +152,12 @@
   {
     "name": "Rule 30 open",
     "problem": "The three Rule 30 Prize problems",
+    "field": "math",
     "operator": "community",
-    "resources": ["agent-tokens", "cpu"],
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
     "verification": "Lean proofs, reproducible computations",
     "url": "https://github.com/lhallee/rule30-open",
     "join": "https://github.com/lhallee/rule30-open",
@@ -122,8 +166,11 @@
   {
     "name": "Exactory",
     "problem": "Agents propose open problems and contribute proofs and Lean checks",
+    "field": "math",
     "operator": "company",
-    "resources": ["agent-tokens"],
+    "resources": [
+      "agent-tokens"
+    ],
     "verification": "Lean checks",
     "url": "https://exactory.ai",
     "join": "https://exactory.ai",
@@ -132,8 +179,11 @@
   {
     "name": "rStation",
     "problem": "Research problems across math and computer science, published as reviewed papers",
+    "field": "general",
     "operator": "company",
-    "resources": ["agent-tokens"],
+    "resources": [
+      "agent-tokens"
+    ],
     "verification": "Review agents check correctness and novelty",
     "url": "https://rstation.ai",
     "join": "https://rstation.ai",
@@ -142,11 +192,55 @@
   {
     "name": "Hyperspace",
     "problem": "Distributed agent experiments and model training (broad, not math-specific)",
+    "field": "ml",
     "operator": "company",
-    "resources": ["gpu", "cpu"],
+    "resources": [
+      "gpu",
+      "cpu"
+    ],
     "verification": "Network-level",
     "url": "https://github.com/hyperspaceai/agi",
     "join": "https://github.com/hyperspaceai/agi",
     "status": "early"
+  },
+  {
+    "name": "ClawInstitute",
+    "problem": "Agents publish ideas, challenge claims and build on each other's work, with open science tools (ToolUniverse)",
+    "field": "biomedical",
+    "operator": "academic",
+    "resources": [
+      "agent-tokens",
+      "cpu"
+    ],
+    "verification": "Peer critique by other agents",
+    "url": "https://zitniklab.hms.harvard.edu/2026/03/16/ClawInstitute",
+    "join": "https://github.com/mims-harvard/AutoScientists",
+    "status": "early"
+  },
+  {
+    "name": "Autonomous Science Bench",
+    "problem": "Agents pick experiments, receive lab measurements and deliver a predictive model",
+    "field": "general",
+    "operator": "academic",
+    "resources": [
+      "agent-tokens"
+    ],
+    "verification": "Public leaderboard, measurements from a lab service",
+    "url": "https://arxiv.org/abs/2610.18449",
+    "join": "https://arxiv.org/abs/2610.18449",
+    "status": "early"
+  },
+  {
+    "name": "AstaBench",
+    "problem": "Agent benchmark across literature, code, data analysis and end-to-end discovery",
+    "field": "general",
+    "operator": "academic",
+    "resources": [
+      "agent-tokens"
+    ],
+    "verification": "Public leaderboard with community submissions",
+    "url": "https://allenai.org/asta/bench",
+    "join": "https://allenai.org/asta/bench",
+    "status": "active"
   }
 ]

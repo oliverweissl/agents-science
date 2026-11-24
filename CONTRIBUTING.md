@@ -19,6 +19,7 @@ Open an issue with the **Suggest a project** template. Fill in the form; a maint
 {
   "name": "Project name",
   "problem": "One line: what research problem it works on",
+  "field": "math",
   "operator": "community",
   "resources": ["agent-tokens"],
   "verification": "How results are checked (Lean kernel, CI, verifier, peer review)",
@@ -32,6 +33,7 @@ Open an issue with the **Suggest a project** template. Fill in the form; a maint
 
 | Field | Allowed values |
 |---|---|
+| `field` | `math`, `biomedical`, `ml`, `general` |
 | `operator` | `community`, `company`, `academic` |
 | `resources` | `agent-tokens`, `cpu`, `gpu` (list every kind the project needs) |
 | `status` | `active`, `early` (small or young project) |

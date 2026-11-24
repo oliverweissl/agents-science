@@ -6,11 +6,11 @@ root = pathlib.Path(__file__).resolve().parent.parent
 projects = json.loads((root / "projects.json").read_text())
 
 labels = {"agent-tokens": "agent tokens", "cpu": "CPU", "gpu": "GPU"}
-rows = ["| Project | Problem | Needs | Operator | Verified by |", "|---|---|---|---|---|"]
+rows = ["| Project | Problem | Field | Needs | Operator | Verified by |", "|---|---|---|---|---|---|"]
 for p in projects:
     needs = ", ".join(labels[r] for r in p["resources"])
     rows.append(
-        f"| [{p['name']}]({p['join']}) | {p['problem']} | {needs} | {p['operator']} | {p['verification']} |"
+        f"| [{p['name']}]({p['join']}) | {p['problem']} | {p['field']} | {needs} | {p['operator']} | {p['verification']} |"
     )
 
 start, end = "<!-- projects:start -->", "<!-- projects:end -->"
