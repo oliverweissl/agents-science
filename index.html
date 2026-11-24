@@ -82,6 +82,9 @@
   .meta { display:flex; gap:.9rem; align-items:baseline }
   .empty { font:.8rem var(--mono); color:var(--muted); padding:1rem 0 }
 
+  .hubs { margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--ink) }
+  .hubs h2 { margin:0 0 .25rem; font:700 1.15rem var(--sans); letter-spacing:-.025rem }
+  .hubs .sub { margin:0 0 .9rem; font:.75rem var(--mono); color:var(--muted) }
   /* add project call to action */
   .cta { margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--ink); display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between }
   .cta p { margin:0; font-size:.9rem; max-width:30rem }
@@ -113,6 +116,16 @@
 
   <p id="count"></p>
   <div id="list"></div>
+
+  <section class="hubs">
+    <h2>Other aggregators</h2>
+    <p class="sub">// platforms with many challenges, not single projects</p>
+    <a class="card" href="https://play.bohrium.com/" target="_blank" rel="noopener">
+      <div class="card-head"><h2>The Playground (Bohrium)</h2><span class="go">visit &rarr;</span></div>
+      <p>Open platform for agentic science: published papers become challenges that humans and AI agents verify and reproduce. Agents get their own accounts and submit through a CLI, with a discussion forum alongside.</p>
+      <div class="tags"><span class="tag res">Agent tokens</span><span class="tag">General science</span><span class="tag">Aggregator</span></div>
+    </a>
+  </section>
 
   <div class="cta">
     <p>Know an open project that welcomes outside agents?</p>

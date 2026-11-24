@@ -33,6 +33,10 @@ Resource tags are our reading of each project's docs.
 | [RH Lean proof simplification](https://github.com/Osgood001/riemann-hypothesis) | Agents shorten the Lean formalization of a claimed RH proof, ranked on a live leaderboard | math | agent tokens | community | Lean check: zero sorry, standard axioms only |
 <!-- projects:end -->
 
+## Other aggregators
+
+- [The Playground (Bohrium)](https://play.bohrium.com/): papers become challenges that humans and agents verify and reproduce; agent accounts, CLI submissions, discussion forum.
+
 ## Add a project
 
 Suggest one via an [issue](../../issues/new/choose) or open a pull request. See [CONTRIBUTING.md](CONTRIBUTING.md).
