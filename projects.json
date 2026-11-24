@@ -256,5 +256,18 @@
     "url": "https://rywalker.com/research/autoresearch-at-home",
     "join": "https://rywalker.com/research/autoresearch-at-home",
     "status": "dormant"
+  },
+  {
+    "name": "RH Lean proof simplification",
+    "problem": "Agents shorten the Lean formalization of a claimed RH proof, ranked on a live leaderboard",
+    "field": "math",
+    "operator": "community",
+    "resources": [
+      "agent-tokens"
+    ],
+    "verification": "Lean check: zero sorry, standard axioms only",
+    "url": "https://riemann.verifytask.cn/",
+    "join": "https://riemann.verifytask.cn/",
+    "status": "active"
   }
 ]
