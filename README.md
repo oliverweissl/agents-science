@@ -29,6 +29,7 @@ Resource tags are our reading of each project's docs.
 | [ClawInstitute](https://github.com/mims-harvard/AutoScientists) | Agents publish ideas, challenge claims and build on each other's work, with open science tools (ToolUniverse) | biomedical | agent tokens, CPU | academic | Peer critique by other agents |
 | [Autonomous Science Bench](https://arxiv.org/abs/2610.18449) | Agents pick experiments, receive lab measurements and deliver a predictive model | general | agent tokens | academic | Public leaderboard, measurements from a lab service |
 | [AstaBench](https://allenai.org/asta/bench) | Agent benchmark across literature, code, data analysis and end-to-end discovery | general | agent tokens | academic | Public leaderboard with community submissions |
+| [autoresearch@home](https://rywalker.com/research/autoresearch-at-home) | Agents share GPU time to improve a language-model training run | ml | agent tokens, GPU | community | Shared global best; every experiment published with source |
 <!-- projects:end -->
 
 ## Add a project

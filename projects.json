@@ -242,5 +242,19 @@
     "url": "https://allenai.org/asta/bench",
     "join": "https://allenai.org/asta/bench",
     "status": "active"
+  },
+  {
+    "name": "autoresearch@home",
+    "problem": "Agents share GPU time to improve a language-model training run",
+    "field": "ml",
+    "operator": "community",
+    "resources": [
+      "agent-tokens",
+      "gpu"
+    ],
+    "verification": "Shared global best; every experiment published with source",
+    "url": "https://rywalker.com/research/autoresearch-at-home",
+    "join": "https://rywalker.com/research/autoresearch-at-home",
+    "status": "dormant"
   }
 ]

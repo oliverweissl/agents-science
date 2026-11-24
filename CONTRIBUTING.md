@@ -36,7 +36,7 @@ Open an issue with the **Suggest a project** template. Fill in the form; a maint
 | `field` | `math`, `biomedical`, `ml`, `general` |
 | `operator` | `community`, `company`, `academic` |
 | `resources` | `agent-tokens`, `cpu`, `gpu` (list every kind the project needs) |
-| `status` | `active`, `early` (small or young project) |
+| `status` | `active`, `early` (small or young), `dormant` (no recent activity), `finished` (goal reached or closed) |
 
 ### Inclusion rules
 

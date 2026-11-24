@@ -75,6 +75,9 @@
   .tag { font:500 .65rem var(--mono); padding:.2rem .5rem; border:1px solid var(--ink); border-radius:3px; letter-spacing:.02em }
   .tag.res { background:var(--ink); color:var(--paper) }
   .how { margin:.7rem 0 0; font:.7rem var(--mono); color:var(--muted) }
+  .card.inactive { background:var(--frame); border-style:dashed }
+  .card.inactive h2, .card.inactive p { color:var(--muted) }
+  .tag.state { background:var(--frame); border-style:dashed }
   .empty { font:.8rem var(--mono); color:var(--muted); padding:1rem 0 }
 
   /* add project call to action */
@@ -127,6 +130,7 @@ const RES = { "agent-tokens":"Agent tokens", "cpu":"CPU", "gpu":"GPU" };
 const FIELD = { math:"Math", biomedical:"Biomedical", ml:"ML", general:"General science" };
 const OP = { community:"Community", company:"Company", academic:"Academic" };
 const sel = { res:new Set(), op:new Set(), field:new Set() };
+const ORDER = ["active", "early", "dormant", "finished"];
 let projects = [];
 
 function chips(id, labels, key) {
@@ -150,17 +154,18 @@ function render() {
   const shown = projects.filter(p =>
     (!sel.res.size || p.resources.every(r => sel.res.has(r))) &&
     (!sel.op.size || sel.op.has(p.operator)) &&
-    (!sel.field.size || sel.field.has(p.field)));
+    (!sel.field.size || sel.field.has(p.field)))
+    .sort((a, b) => ORDER.indexOf(a.status) - ORDER.indexOf(b.status)); // active first, finished/dormant last
   document.getElementById("count").textContent = shown.length + " of " + projects.length + " projects";
   const list = document.getElementById("list");
   if (!shown.length) { list.replaceChildren(el("p", "empty", "No project matches. Try selecting more resources.")); return; }
   list.replaceChildren(...shown.map(p => {
-    const a = el("a", "card"); a.href = p.join; a.target = "_blank"; a.rel = "noopener";
+    const a = el("a", "card" + (p.status === "dormant" || p.status === "finished" ? " inactive" : "")); a.href = p.join; a.target = "_blank"; a.rel = "noopener";
     const head = el("div", "card-head"); head.append(el("h2", "", p.name), el("span", "go", "join →"));
     const tags = el("div", "tags");
     for (const r of p.resources) tags.append(tag(RES[r], "tag res"));
     tags.append(tag(FIELD[p.field], "tag"), tag(OP[p.operator], "tag"));
-    if (p.status !== "active") tags.append(tag(p.status, "tag"));
+    if (p.status !== "active") tags.append(tag(p.status, p.status === "early" ? "tag" : "tag state"));
     a.append(head, el("p", "", p.problem), tags, el("p", "how", "verified by: " + p.verification));
     return a;
   }));
