@@ -78,6 +78,8 @@
   .card.inactive { background:var(--frame); border-style:dashed }
   .card.inactive h2, .card.inactive p { color:var(--muted) }
   .tag.state { background:var(--frame); border-style:dashed }
+  .stat { font:.75rem var(--mono); white-space:nowrap }
+  .meta { display:flex; gap:.9rem; align-items:baseline }
   .empty { font:.8rem var(--mono); color:var(--muted); padding:1rem 0 }
 
   /* add project call to action */
@@ -105,6 +107,7 @@
   <div class="filters">
     <label>I can spare</label><div class="chips" id="res"></div>
     <label>field</label><div class="chips" id="field"></div>
+    <label>sort by</label><div class="chips" id="sort"></div>
     <label>operated by</label><div class="chips" id="op"></div>
   </div>
 
@@ -132,6 +135,9 @@ const OP = { community:"Community", company:"Company", academic:"Academic" };
 const sel = { res:new Set(), op:new Set(), field:new Set() };
 const ORDER = ["active", "early", "dormant", "finished"];
 let projects = [];
+let stats = {};
+let sortKey = "status";
+const SORT = { status:"Activity", stars:"Stars", newest:"Newest" };
 
 function chips(id, labels, key) {
   const el = document.getElementById(id);
@@ -149,19 +155,41 @@ function chips(id, labels, key) {
 function tag(text, cls) { const s = document.createElement("span"); s.className = cls; s.textContent = text; return s; }
 function el(tagName, cls, text) { const e = document.createElement(tagName); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
 
+// projects without GitHub stats (non-GitHub sites) sort after those with data
+function compare(a, b) {
+  const sa = stats[a.url], sb = stats[b.url];
+  const byStatus = ORDER.indexOf(a.status) - ORDER.indexOf(b.status);
+  if (sortKey === "stars") return (sb ? sb.stars : -1) - (sa ? sa.stars : -1) || byStatus;
+  if (sortKey === "newest") return (sb ? sb.created : "").localeCompare(sa ? sa.created : "") || byStatus;
+  return byStatus;
+}
+
+function sortChips() {
+  const box = document.getElementById("sort");
+  for (const [k, label] of Object.entries(SORT)) {
+    const b = el("button", "chip", label); b.setAttribute("aria-pressed", String(k === sortKey));
+    b.onclick = () => { sortKey = k; for (const c of box.children) c.setAttribute("aria-pressed", String(c === b)); render(); };
+    box.append(b);
+  }
+}
+
 function render() {
   // resources: a project shows when everything it needs is covered by the selection; operator: any selected
   const shown = projects.filter(p =>
     (!sel.res.size || p.resources.every(r => sel.res.has(r))) &&
     (!sel.op.size || sel.op.has(p.operator)) &&
     (!sel.field.size || sel.field.has(p.field)))
-    .sort((a, b) => ORDER.indexOf(a.status) - ORDER.indexOf(b.status)); // active first, finished/dormant last
+    .sort(compare);
   document.getElementById("count").textContent = shown.length + " of " + projects.length + " projects";
   const list = document.getElementById("list");
   if (!shown.length) { list.replaceChildren(el("p", "empty", "No project matches. Try selecting more resources.")); return; }
   list.replaceChildren(...shown.map(p => {
     const a = el("a", "card" + (p.status === "dormant" || p.status === "finished" ? " inactive" : "")); a.href = p.join; a.target = "_blank"; a.rel = "noopener";
-    const head = el("div", "card-head"); head.append(el("h2", "", p.name), el("span", "go", "join →"));
+    const head = el("div", "card-head"); const s = stats[p.url];
+    const meta = el("div", "meta");
+    if (s) meta.append(el("span", "stat", "★ " + s.stars));
+    meta.append(el("span", "go", "join →"));
+    head.append(el("h2", "", p.name), meta);
     const tags = el("div", "tags");
     for (const r of p.resources) tags.append(tag(RES[r], "tag res"));
     tags.append(tag(FIELD[p.field], "tag"), tag(OP[p.operator], "tag"));
@@ -176,8 +204,11 @@ fetch("https://api.github.com/repos/oliverweissl/agents-science").then(r => r.ok
   if (d && Number.isInteger(d.stargazers_count)) document.getElementById("stars").textContent = d.stargazers_count;
 }).catch(() => {});
 
-chips("res", RES, "res"); chips("field", FIELD, "field"); chips("op", OP, "op");
-fetch("projects.json").then(r => r.json()).then(d => {
+sortChips(); chips("res", RES, "res"); chips("field", FIELD, "field"); chips("op", OP, "op");
+// stats.json is refreshed daily by a GitHub Action; the page works without it
+const statsReq = fetch("stats.json").then(r => r.ok ? r.json() : {}).catch(() => ({}));
+Promise.all([fetch("projects.json").then(r => r.json()), statsReq]).then(([d, s]) => {
+  stats = s;
   projects = d;
   document.getElementById("n-all").textContent = d.length;
   document.getElementById("n-gpu").textContent = d.filter(p => p.resources.includes("gpu")).length;
