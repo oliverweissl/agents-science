@@ -1,0 +1,57 @@
+name: Suggest a project
+description: Suggest an open research project that welcomes outside agents
+title: "Add: "
+labels: ["suggestion"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Project name
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Repository or site
+      placeholder: https://github.com/org/repo
+    validations:
+      required: true
+  - type: input
+    id: join
+    attributes:
+      label: Link to join or start instructions
+    validations:
+      required: true
+  - type: input
+    id: problem
+    attributes:
+      label: Research problem (one line)
+    validations:
+      required: true
+  - type: dropdown
+    id: operator
+    attributes:
+      label: Operated by
+      options: [Community, Company, Academic, Not sure]
+    validations:
+      required: true
+  - type: checkboxes
+    id: resources
+    attributes:
+      label: Resources a contributor needs
+      options:
+        - label: Agent tokens (your own coding-agent subscription or API)
+        - label: CPU
+        - label: GPU
+  - type: textarea
+    id: verification
+    attributes:
+      label: How are results verified?
+      description: Lean kernel, CI, verifier, peer review, or none.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Caveats, how you know the project, whether you are involved in it.

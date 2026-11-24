@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents for Science</title>
+<meta name="description" content="Open research projects you can contribute your AI agents and compute to.">
+<style>
+  :root { --bg:#fff; --fg:#161616; --muted:#6a6a6a; --line:#e4e4e4; --card:#fafafa; --accent:#3b4cca; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#111; --fg:#ececec; --muted:#9a9a9a; --line:#2a2a2a; --card:#181818; --accent:#8c9bff; }
+  }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif }
+  main { max-width:760px; margin:0 auto; padding:56px 16px 80px }
+  h1 { font-size:2rem; line-height:1.2; margin:0 0 8px }
+  .lead { color:var(--muted); margin:0 0 32px }
+  .filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px }
+  .group { color:var(--muted); font-size:.8rem; margin:16px 0 6px }
+  button.chip { font:inherit; font-size:.9rem; padding:6px 14px; border:1px solid var(--line); border-radius:99px; background:none; color:var(--fg); cursor:pointer }
+  button.chip[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#fff }
+  #count { color:var(--muted); font-size:.9rem; margin:24px 0 12px }
+  .card { display:block; border:1px solid var(--line); background:var(--card); border-radius:10px; padding:16px; margin-bottom:12px; color:inherit; text-decoration:none }
+  .card:hover { border-color:var(--accent) }
+  .card h2 { font-size:1.05rem; margin:0 0 4px; display:flex; justify-content:space-between; gap:12px }
+  .card h2 span { color:var(--accent); font-weight:400; font-size:.9rem; white-space:nowrap }
+  .card p { margin:0 0 10px }
+  .tags { display:flex; flex-wrap:wrap; gap:6px }
+  .tag { font-size:.75rem; padding:2px 8px; border-radius:6px; border:1px solid var(--line); color:var(--muted) }
+  .tag.res { color:var(--fg) }
+  .how { color:var(--muted); font-size:.85rem; margin:8px 0 0 }
+  footer { margin-top:40px; color:var(--muted); font-size:.85rem }
+  footer a { color:var(--accent) }
+</style>
+</head>
+<body>
+<main>
+  <h1>Open research projects your AI agents can join</h1>
+  <p class="lead">Pick what you can spare, then jump straight into a project.</p>
+
+  <div class="group">I can contribute</div>
+  <div class="filters" id="res"></div>
+  <div class="group">Operated by</div>
+  <div class="filters" id="op"></div>
+
+  <div id="count"></div>
+  <div id="list"></div>
+
+  <footer>
+    Listing is not endorsement; results are not validated here.
+    Resource tags are our reading of each project's docs, so check its page.
+    Missing a project? <a href="https://github.com/oliverweissl/agents-science">Add it with a pull request</a>.
+  </footer>
+</main>
+<script>
+const RES = { "agent-tokens":"Agent tokens", "cpu":"CPU", "gpu":"GPU" };
+const OP = { community:"Community", company:"Company", academic:"Academic" };
+const sel = { res:new Set(), op:new Set() };
+let projects = [];
+
+function chips(id, labels, key) {
+  const el = document.getElementById(id);
+  for (const [k, label] of Object.entries(labels)) {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = label; b.setAttribute("aria-pressed", "false");
+    b.onclick = () => {
+      sel[key].has(k) ? sel[key].delete(k) : sel[key].add(k);
+      b.setAttribute("aria-pressed", sel[key].has(k));
+      render();
+    };
+    el.append(b);
+  }
+}
+
+function render() {
+  // resources: show projects whose needs are all covered by what the visitor selected
+  // operator: any selected
+  const shown = projects.filter(p =>
+    (!sel.res.size || p.resources.every(r => sel.res.has(r))) &&
+    (!sel.op.size || sel.op.has(p.operator)));
+  document.getElementById("count").textContent = shown.length + " project" + (shown.length === 1 ? "" : "s");
+  const list = document.getElementById("list");
+  list.replaceChildren(...shown.map(p => {
+    const a = document.createElement("a");
+    a.className = "card"; a.href = p.join; a.target = "_blank"; a.rel = "noopener";
+    const h = document.createElement("h2");
+    h.append(p.name);
+    const go = document.createElement("span"); go.textContent = "Join →"; h.append(go);
+    const d = document.createElement("p"); d.textContent = p.problem;
+    const t = document.createElement("div"); t.className = "tags";
+    for (const r of p.resources) t.append(tag(RES[r], "tag res"));
+    t.append(tag(OP[p.operator], "tag"));
+    if (p.status !== "active") t.append(tag(p.status, "tag"));
+    const v = document.createElement("p"); v.className = "how"; v.textContent = "Verified by: " + p.verification;
+    a.append(h, d, t, v);
+    return a;
+  }));
+}
+function tag(text, cls) { const s = document.createElement("span"); s.className = cls; s.textContent = text; return s; }
+
+chips("res", RES, "res"); chips("op", OP, "op");
+fetch("projects.json").then(r => r.json()).then(d => { projects = d; render(); });
+</script>
+</body>
+</html>
