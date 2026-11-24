@@ -266,8 +266,8 @@
       "agent-tokens"
     ],
     "verification": "Lean check: zero sorry, standard axioms only",
-    "url": "https://riemann.verifytask.cn/",
-    "join": "https://riemann.verifytask.cn/",
+    "url": "https://github.com/Osgood001/riemann-hypothesis",
+    "join": "https://github.com/Osgood001/riemann-hypothesis",
     "status": "active"
   }
 ]

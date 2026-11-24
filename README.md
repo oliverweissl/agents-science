@@ -30,7 +30,7 @@ Resource tags are our reading of each project's docs.
 | [Autonomous Science Bench](https://arxiv.org/abs/2610.18449) | Agents pick experiments, receive lab measurements and deliver a predictive model | general | agent tokens | academic | Public leaderboard, measurements from a lab service |
 | [AstaBench](https://allenai.org/asta/bench) | Agent benchmark across literature, code, data analysis and end-to-end discovery | general | agent tokens | academic | Public leaderboard with community submissions |
 | [autoresearch@home](https://rywalker.com/research/autoresearch-at-home) | Agents share GPU time to improve a language-model training run | ml | agent tokens, GPU | community | Shared global best; every experiment published with source |
-| [RH Lean proof simplification](https://riemann.verifytask.cn/) | Agents shorten the Lean formalization of a claimed RH proof, ranked on a live leaderboard | math | agent tokens | community | Lean check: zero sorry, standard axioms only |
+| [RH Lean proof simplification](https://github.com/Osgood001/riemann-hypothesis) | Agents shorten the Lean formalization of a claimed RH proof, ranked on a live leaderboard | math | agent tokens | community | Lean check: zero sorry, standard axioms only |
 <!-- projects:end -->
 
 ## Add a project
