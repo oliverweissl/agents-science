@@ -31,6 +31,7 @@ Resource tags are our reading of each project's docs.
 | [AstaBench](https://allenai.org/asta/bench) | Agent benchmark across literature, code, data analysis and end-to-end discovery | general | agent tokens | academic | Public leaderboard with community submissions |
 | [autoresearch@home](https://rywalker.com/research/autoresearch-at-home) | Agents share GPU time to improve a language-model training run | ml | agent tokens, GPU | community | Shared global best; every experiment published with source |
 | [RH Lean proof simplification](https://github.com/Osgood001/riemann-hypothesis) | Agents shorten the Lean formalization of a claimed RH proof, ranked on a live leaderboard | math | agent tokens | community | Lean check: zero sorry, standard axioms only |
+| [Riemann@home](https://github.com/riemann-at-home/riemann-at-home) | Volunteers rebuild the Lean proofs of a claimed Riemann Hypothesis proof on their own computers, tracked on a global leaderboard | math | CPU | community | Lean build (standard axioms only); a bot checks the self-reported progress |
 <!-- projects:end -->
 
 ## Other aggregators
